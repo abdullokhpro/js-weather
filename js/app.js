@@ -1,4 +1,4 @@
-// const API_URl = "https://api.weatherapi.com";
+// // const API_URl = "https://api.weatherapi.com";
 const weatherForm = document.querySelector(".weather__top");
 const weatherSearchInput = document.querySelector("#weather-search");
 const weatherTitle = document.querySelector(".weather__bottom__title");
@@ -6,15 +6,16 @@ const weatherImg = document.querySelector(".weather__bottom__img");
 const weatherDegrees = document.querySelector(
   ".weather__bottom__degrees__text"
 );
+const weatherItem = document.querySelector(".weather__items");
 const weatherCondition = document.querySelector(".weather__bottom__reference");
+
+weatherForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  fetchWeatherData(weatherSearchInput.value);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchWeatherData();
-});
-
-weatherForm.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  fetchWeatherData(weatherSearchInput.value);
 });
 
 async function fetchWeatherData(region = "Tashkent") {
@@ -24,8 +25,15 @@ async function fetchWeatherData(region = "Tashkent") {
 
   await response
     .json()
-    .then((res) => renderWeatherData(res))
-    .catch((err) => console.log(err));
+    .then((res) => {
+      if (res.error) {
+        throw new Error("Bunday shahar mavjud emas");
+      }
+      renderWeatherData(res);
+    })
+    .catch((err) => {
+      alert(err);
+    });
 }
 
 function renderWeatherData(data) {
@@ -35,4 +43,17 @@ function renderWeatherData(data) {
   weatherImg.src = data.current.condition.icon;
   weatherDegrees.innerHTML = `${data.current.temp_c}˚`;
   weatherCondition.textContent = data.current.condition.text;
+
+  let forcastDayItems = "";
+  data.forecast.forecastday[0].hour.forEach((el) => {
+    forcastDayItems += `
+    <div class="weather__item">
+          <p>${el.time.split(" ")[1]}</p>
+          <img src="${el.condition.icon}" alt="">
+          <p>${el.temp_c}˚</p>
+      </div>
+  `;
+  });
+
+  weatherItem.innerHTML = forcastDayItems;
 }

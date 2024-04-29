@@ -40,6 +40,10 @@ button {
 }
 
 .weather {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 100px;
   padding: 50px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -49,6 +53,7 @@ button {
 .weather__left {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   width: 40%;
   padding-top: 40px;
@@ -90,4 +95,20 @@ button {
 }
 .weather__bottom__reference {
   font-size: 32px;
+}
+.weather__right {
+  overflow: auto;
+}
+.weather__items {
+  display: flex;
+  gap: 20px;
+}
+.weather__item {
+  width: 150px;
+  height: 150px;
+  padding: 20px;
+  min-width: 150px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
 }
