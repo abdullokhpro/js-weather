@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: Poppins;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+* ::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f3f6fa;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.df {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

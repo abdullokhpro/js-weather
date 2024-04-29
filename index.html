@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <section id="weather">
+        <div class="container">
+          <div class="weather">
+            <div class="weather__left">
+              <form class="weather__top">
+                <label
+                  class="weather__search__label"
+                  for="weather__search__input"
+                  >Your city</label
+                >
+                <input
+                  id="weather-search"
+                  class="weather__search"
+                  type="text"
+                  name="weather__search"
+                  placeholder="Tashkent"
+                />
+              </form>
+
+              <div class="weather__bottom">
+                <p class="weather__bottom__date">5:05 PM, Mon, Now 23, 2020</p>
+
+                <h2 class="weather__bottom__title">Tashkent</h2>
+                <div class="weather__bottom__degrees">
+                  <img class="weather__bottom__img" src="" alt="" />
+                  <p class="weather__bottom__degrees__text">72˚</p>
+                </div>
+                <p class="weather__bottom__reference">Cloudy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/app.js"></script>
+  </body>
+</html>
